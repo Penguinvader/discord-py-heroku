@@ -67,11 +67,7 @@ async def on_ready():
     print(f"Logged in as {bot.user.name}({bot.user.id})")
 
 @bot.command()
-async def ping(ctx):
-    await ctx.send("pong")
-
-@bot.command()
-async def deck(ctx)
+async def deck(ctx):
     await ctx.send(f"{ctx.message.author.mention}, your deck is: {random.choice(structlist)}")
 
 if __name__ == "__main__":
