@@ -70,5 +70,9 @@ async def on_ready():
 async def deck(ctx):
     await ctx.send(f"{ctx.message.author.mention}, your deck is: {random.choice(structlist)}")
 
+@bot.command()
+async def roll(ctx):
+    await ctx.send(f"{ctx.message.author.mention} rolled {random.randrange(1,101)}!")
+
 if __name__ == "__main__":
     bot.run(TOKEN)
