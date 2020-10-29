@@ -10,57 +10,55 @@ TOKEN = os.getenv("DISCORD_TOKEN")
 import random
 
 structs = """
-    Structure Deck: Blaze of Destruction
-    Cyber Dragon Revolution Structure Deck
-    Structure Deck: Cyberse Link
-    Structure Deck: Dinosaur's Rage
-    Dinosmasher's Fury Structure Deck
-    Structure Deck: Dragon's Roar
-    Dragons Collide Structure Deck
-    Dragunity Legion Structure Deck
-    Emperor of Darkness Structure Deck
-    Structure Deck: Freezing Chains
-    Structure Deck: Fury from the Deep
-    Gates of the Underworld Structure Deck
-    Geargia Rampage Structure Deck
-    HERO Strike Structure Deck
-    Structure Deck: Invincible Fortress
-    Structure Deck: Lord of the Storm
-    Lost Sanctuary Structure Deck
-    Machina Mayhem Structure Deck
-    Structure Deck: Machine Re-Volt
-    Machine Reactor Structure Deck
-    Structure Deck: Marik (TCG)
-    Master of Pendulum Structure Deck
-    Structure Deck: Mechanized Madness
-    Onslaught of the Fire Kings Structure Deck
-    Structure Deck: Order of the Spellcasters
-    Pendulum Domination Structure Deck
-    Structure Deck: Powercode Link
-    Realm of Light Structure Deck
-    Realm of the Sea Emperor Structure Deck
-    Rise of the Dragon Lords Structure Deck
-    Rise of the True Dragons Structure Deck
-    Structure Deck: Rokket Revolt
-    Structure Deck: Sacred Beasts
-    Saga of Blue-Eyes White Dragon Structure Deck
-    Samurai Warlords Structure Deck
-    Structure Deck: Seto Kaiba
-    Structure Deck: Shaddoll Showdown
-    Structure Deck: Soulburner
-    Spellcaster's Command Structure Deck
-    Structure Deck: Spellcaster's Judgment
-    Structure Deck: Spirit Charmers
-    Structure Deck: Lair of Darkness
-    Structure Deck: Wave of Light
-    Synchron Extreme Structure Deck
-    The Dark Emperor Structure Deck
-    Structure Deck: Warrior's Triumph
-    Warriors' Strike Structure Deck
-    Structure Deck: Yugi Muto
-    Structure Deck: Zombie Horde
-    Structure Deck: Zombie Madness
-    Zombie World Structure Deck
+[Dragon's Roa](https://www.duelingbook.com/deck?id=2596279)
+[Zombie Madness](https://www.duelingbook.com/deck?id=2596284)
+[Blaze of Destruction](https://www.duelingbook.com/deck?id=2596277)
+[Fury from the Deep](https://www.duelingbook.com/deck?id=2596287)
+[Warrior's Triumph](https://www.duelingbook.com/deck?id=2596288)
+[Spellcaster's Judgment](https://www.duelingbook.com/deck?id=2596292)
+[Invincible Fortress](https://www.duelingbook.com/deck?id=2584605)
+[Lord of the Storm](https://www.duelingbook.com/deck?id=2596309)
+[Dinosaur's Rage](https://www.duelingbook.com/deck?id=2592591)
+[Machine Re-Volt](https://www.duelingbook.com/deck?id=2596312)
+[Rise of the Dragon Lords](https://www.duelingbook.com/deck?id=2596326)
+[The Dark Emperor](https://www.duelingbook.com/deck?id=2596341)
+[Zombie World](https://www.duelingbook.com/deck?id=2596349)
+[Spellcaster's Command](https://www.duelingbook.com/deck?id=2596353)
+[Warriors' Strike](https://www.duelingbook.com/deck?id=2596356)
+[Machina Mayhem](https://www.duelingbook.com/deck?id=2596357)
+[Marik](https://www.duelingbook.com/deck?id=2596359)
+[Dragunity Legion](https://www.duelingbook.com/deck?id=2595596)
+[Lost Sanctuary](https://www.duelingbook.com/deck?id=2596363)
+[Gates of the Underworld](https://www.duelingbook.com/deck?id=2595210)
+[Dragons Collide](https://www.duelingbook.com/deck?id=2596367)
+[Samurai Warlords](https://www.duelingbook.com/deck?id=2596370)
+[Realm of the Sea Emperor](https://www.duelingbook.com/deck?id=2596373)
+[Onslaught of the Fire Kings](https://www.duelingbook.com/deck?id=2594928)
+[Saga of Blue-Eyes White Dragon](https://www.duelingbook.com/deck?id=2596376)
+[Cyber Dragon Revolution](https://www.duelingbook.com/deck?id=2594924)
+[Realm of Light](https://www.duelingbook.com/deck?id=2596381)
+[Geargia Rampage](https://www.duelingbook.com/deck?id=2596388)
+[HERO Strike](https://www.duelingbook.com/deck?id=2592906)
+[Synchron Extreme](https://www.duelingbook.com/deck?id=2596391)
+[Master of Pendulum](https://www.duelingbook.com/deck?id=2594862)
+[Emperor of Darkness](https://www.duelingbook.com/deck?id=2596395)
+[Rise of the True Dragons](https://www.duelingbook.com/deck?id=2596399)
+[Yugi Muto](https://www.duelingbook.com/deck?id=2596403)
+[Seto Kaiba](https://www.duelingbook.com/deck?id=2594940)
+[Pendulum Domination](https://www.duelingbook.com/deck?id=2594929)
+[Machine Reactor](https://www.duelingbook.com/deck?id=2596409)
+[Dinosmasher's Fury](https://www.duelingbook.com/deck?id=2594926)
+[Cyberse Link](https://www.duelingbook.com/deck?id=2594927)
+[Wave of Light](https://www.duelingbook.com/deck?id=2594937)
+[Lair of Darkness](https://www.duelingbook.com/deck?id=2596418)
+[Powercode Link](https://www.duelingbook.com/deck?id=2594931)
+[Zombie Horde](https://www.duelingbook.com/deck?id=3128211)
+[Soulburner](https://www.duelingbook.com/deck?id=3073187)
+[Order of the Spellcasters](https://www.duelingbook.com/deck?id=3750952)
+[Rokket Revolt](https://www.duelingbook.com/deck?id=3959291)
+[Shaddoll Showdown](https://www.duelingbook.com/deck?id=4776087)
+[Machinized Madness](https://www.duelingbook.com/deck?id=5407162)
+[Sacred Beasts](https://www.duelingbook.com/deck?id=5961910)
 """.strip()
 
 structlist = [s.strip() for s in structs.split("\n")]
@@ -72,16 +70,19 @@ async def on_ready():
     for member in bot.get_all_members():
         print(member)
 
-@bot.command()
+@bot.command(help="Gives a specified number of random structure decks.")
 async def deck(ctx, count=None):
     try:
+        out = discord.Embed()
         if count is None or count == "1":
-            await ctx.send(f"{ctx.message.author.mention}, your deck is: {random.choice(structlist)}")
+            out.add_field(name = f"{ctx.message.author.name}'s deck:", value = f"{random.choice(structlist)}", inline= True)
+            await ctx.send(embed = out)
         else:
             decks = random.sample(structlist, k=int(count))
-            await ctx.send(f"{ctx.message.author.mention}, your decks are:\n{(', '+chr(10)).join(decks)}")
+            out.add_field(name = f"{ctx.message.author.name}'s decks:", value = f"{(', '+chr(10)).join(decks)}")
+            await ctx.send(embed = out)
     except ValueError:
-        await ctx.send(f"The second argument has to be an integer with max size {len(structlist)}{'.' if random.randrange(10) < 9 else ', idiot.'}")
+        await ctx.send(f"The argument has to be an integer with max size {len(structlist)}{'.' if random.randrange(10) < 9 else ', idiot.'}")
 
 
 @bot.command()
