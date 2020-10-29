@@ -65,6 +65,9 @@ structlist = [s.strip() for s in structs.split("\n")]
 @bot.event
 async def on_ready():
     print(f"Logged in as {bot.user.name}({bot.user.id})")
+    print("list of visible members:")
+    for member in bot.get_all_members():
+        print(member)
 
 @bot.command()
 async def deck(ctx):
