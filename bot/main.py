@@ -77,12 +77,14 @@ async def deck(ctx, count=None):
         if count is None or count == "1":
             out.add_field(name = f"{ctx.message.author.name}'s deck:", value = f"{random.choice(structlist)}", inline= True)
             await ctx.send(embed = out)
-        else:
+        elif int(count) < 15:
             decks = random.sample(structlist, k=int(count))
             out.add_field(name = f"{ctx.message.author.name}'s decks:", value = f"{(', '+chr(10)).join(decks)}")
             await ctx.send(embed = out)
+        else:
+            raise ValueError
     except ValueError:
-        await ctx.send(f"The argument has to be an integer with max size {len(structlist)}{'.' if random.randrange(10) < 9 else ', idiot.'}")
+        await ctx.send(f"The argument has to be an integer with max size 14{'.' if random.randrange(10) < 9 else ', idiot.'}")
 
 
 @bot.command()
