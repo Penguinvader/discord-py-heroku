@@ -88,6 +88,10 @@ async def roll(ctx):
     await ctx.send(f"{ctx.message.author.mention} rolled {random.randrange(1,101)}!")
 
 @bot.command()
+async def coin(ctx):
+    await ctx.send(f"{ctx.message.author.mention} flipped {'heads' if random.randrange(1) else 'tails'}!")
+
+@bot.command()
 async def order(ctx, *args):
     out = ""
     if args:
@@ -104,6 +108,7 @@ async def help(ctx):
     out = discord.Embed(title = "Commands:")
     out.add_field(name = "!deck [count]", value = "Generates a random structure deck, count times.", inline= False)
     out.add_field(name = "!roll", value = "Rolls a random number between 1 and 100.", inline= False)
+    out.add_field(name = "!coin", value = "Flips a coin.", inline= False)
     out.add_field(name = "!order arg1 arg2 ...", value = "Puts the given arguments in a random order.", inline= False)
     await ctx.send(embed = out)
 
