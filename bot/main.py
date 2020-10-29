@@ -89,7 +89,7 @@ async def roll(ctx):
 
 @bot.command()
 async def coin(ctx):
-    await ctx.send(f"{ctx.message.author.mention} flipped {'heads' if random.randrange(1) else 'tails'}!")
+    await ctx.send(f"{ctx.message.author.mention} flipped {'heads' if random.randrange(2) else 'tails'}!")
 
 @bot.command()
 async def order(ctx, *args):
