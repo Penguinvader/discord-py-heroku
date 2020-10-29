@@ -84,7 +84,7 @@ async def deck(ctx, count=None):
         else:
             raise ValueError
     except ValueError:
-        await ctx.send(f"The argument has to be an integer with max size 14{'.' if random.randrange(10) < 9 else ', idiot.'}")
+        await ctx.send(f"The argument has to be an integer with max value 14{'.' if random.randrange(10) < 9 else ', idiot.'}")
 
 
 @bot.command()
