@@ -74,5 +74,17 @@ async def deck(ctx):
 async def roll(ctx):
     await ctx.send(f"{ctx.message.author.mention} rolled {random.randrange(1,101)}!")
 
+@bot.command()
+async def order(ctx, *args):
+    out = ""
+    if args:
+        arglist = list(args)
+        random.shuffle(arglist)
+        for place, name in enumerate(arglist,1):
+            out += f"{place}. {name}\n"
+        await ctx.send(out)
+    else:
+        await ctx.send("You need to provide at least 1 argument.")
+
 if __name__ == "__main__":
     bot.run(TOKEN)
