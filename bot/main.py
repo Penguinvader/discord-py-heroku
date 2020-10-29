@@ -4,6 +4,7 @@ import discord
 from discord.ext import commands
 
 bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
+bot.remove_command('help')
 TOKEN = os.getenv("DISCORD_TOKEN")
 import random
 
@@ -97,6 +98,14 @@ async def order(ctx, *args):
         await ctx.send(out)
     else:
         await ctx.send("You need to provide at least 1 argument.")
+
+@bot.command()
+async def help(ctx):
+    out = discord.Embed(title = "Commands:")
+    out.add_field(name = "!deck [count]", value = "Generates a random structure deck, count times.", inline= False)
+    out.add_field(name = "!roll", value = "Rolls a random number between 1 and 100.", inline= False)
+    out.add_field(name = "!order arg1 arg2 ...", value = "Puts the given arguments in a random order.", inline= False)
+    await ctx.send(embed = out)
 
 if __name__ == "__main__":
     bot.run(TOKEN)
