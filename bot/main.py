@@ -70,8 +70,16 @@ async def on_ready():
         print(member)
 
 @bot.command()
-async def deck(ctx):
-    await ctx.send(f"{ctx.message.author.mention}, your deck is: {random.choice(structlist)}")
+async def deck(ctx, count=None):
+    try:
+        if count is None or count == "1":
+            await ctx.send(f"{ctx.message.author.mention}, your deck is: {random.choice(structlist)}")
+        else:
+            decks = random.sample(structlist, k=int(count))
+            await ctx.send(f"{ctx.message.author.mention}, your decks are:\n{(', '+chr(10)).join(decks)}")
+    except ValueError:
+        await ctx.send(f"The second argument has to be an integer with max size {len(structlist)}{'.' if random.randrange(10) < 9 else ', idiot.'}")
+
 
 @bot.command()
 async def roll(ctx):
