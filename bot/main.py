@@ -92,6 +92,14 @@ async def coin(ctx):
     await ctx.send(f"{ctx.message.author.mention} flipped {'heads' if random.randrange(2) else 'tails'}!")
 
 @bot.command()
+async def bestdeck(ctx):
+    msg = await ctx.send(f"Calculating best deck: 0%")
+    for i in range(1,5):
+        time.sleep(3)
+        await msg.edit(content = f"Calculating best deck: {25*i}%")
+    await ctx.send("Calculations complete.\nBest deck: Pendulum")
+
+@bot.command()
 async def order(ctx, *args):
     out = ""
     if args:
@@ -109,6 +117,7 @@ async def help(ctx):
     out.add_field(name = "!deck [count]", value = "Generates a random structure deck, count times.", inline= False)
     out.add_field(name = "!roll", value = "Rolls a random number between 1 and 100.", inline= False)
     out.add_field(name = "!coin", value = "Flips a coin.", inline= False)
+    out.add_field(name = "!bestdeck", value = "Uses a cutting edge AI model to calculate the best possible Yu-Gi-Oh! deck, based on the current TCG Advanced format.", inline= False)
     out.add_field(name = "!order arg1 arg2 ...", value = "Puts the given arguments in a random order.", inline= False)
     await ctx.send(embed = out)
 
