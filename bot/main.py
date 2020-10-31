@@ -10,7 +10,6 @@ bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 bot.remove_command('help')
 lastdel = {}
 TOKEN = os.getenv("DISCORD_TOKEN")
-import random
 
 structs = os.getenv("STRUCTS")
 
