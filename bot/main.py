@@ -9,6 +9,7 @@ from discord.ext import commands
 bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 bot.remove_command('help')
 lastdel = {}
+lastedit = {}
 TOKEN = os.getenv("DISCORD_TOKEN")
 
 structs = os.getenv("STRUCTS")
@@ -26,11 +27,22 @@ async def on_ready():
 async def on_message_delete(message):
     lastdel[message.channel] = message
 
+@bot.event
+async def on_message_edit(before,after):
+    lastedit[message.channel] = before
+
 @bot.command()
 async def replay(ctx):
     deleted = lastdel[ctx.channel]
-    out = discord.Embed(timestamp = deleted.created_at, description = lastdel[ctx.channel].content)
+    out = discord.Embed(timestamp = deleted.created_at, description = deleted.content)
     out.set_author(icon_url = deleted.author.avatar_url, name=deleted.author.name)
+    await ctx.send(embed = out)
+
+@bot.command()
+async def unedit(ctx):
+    edited = lastedit[ctx.channel]
+    out = discord.Embed(timestamp = edited.created_at, description = edited.content)
+    out.set_author(icon_url = edited.author.avatar_url, name=edited.author.name)
     await ctx.send(embed = out)
 
 @bot.command(help="Gives a specified number of random structure decks.")
