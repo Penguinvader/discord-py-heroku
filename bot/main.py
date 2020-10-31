@@ -29,7 +29,7 @@ async def on_message_delete(message):
 
 @bot.event
 async def on_message_edit(before,after):
-    lastedit[message.channel] = before
+    lastedit[before.channel] = before
 
 @bot.command()
 async def replay(ctx):
