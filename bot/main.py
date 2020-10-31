@@ -10,7 +10,7 @@ bot.remove_command('help')
 TOKEN = os.getenv("DISCORD_TOKEN")
 import random
 
-with open("structs.txt", "r") as f:
+with open("/bot/structs.txt", "r") as f:
     structs = f.read()
 
 structlist = [s.strip() for s in structs.split("\n")]
