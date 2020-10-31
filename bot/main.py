@@ -99,6 +99,7 @@ async def help(ctx):
     out.add_field(name = "!bestdeck", value = "Uses a cutting edge AI model to calculate the best possible Yu-Gi-Oh! deck, based on the current TCG Advanced format.", inline= False)
     out.add_field(name = "!order arg1 arg2 ...", value = "Puts the given arguments in a random order.", inline= False)
     out.add_field(name = "!replay", value = "Replays the last deleted message.", inline= False)
+    out.add_field(name = "!unedit", value = "Displays the unedited version of the last edited message.", inline= False)
     await ctx.send(embed = out)
 
 if __name__ == "__main__":
