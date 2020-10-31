@@ -3,10 +3,12 @@ import random
 import time
 import discord
 import asyncio
+import datetime
 from discord.ext import commands
 
 bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 bot.remove_command('help')
+lastdel = {}
 TOKEN = os.getenv("DISCORD_TOKEN")
 import random
 
@@ -21,6 +23,17 @@ async def on_ready():
     print("list of visible members:")
     for member in bot.get_all_members():
         print(member)
+
+@bot.event
+async def on_message_delete(message):
+    lastdel[message.channel] = message
+
+@bot.command()
+async def replay(ctx):
+    deleted = lastdel[ctx.channel]
+    out = discord.Embed(timestamp = deleted.created_at, description = lastdel[ctx.channel].content)
+    out.set_author(icon_url = deleted.author.avatar_url, name=deleted.author.name)
+    await ctx.send(embed = out)
 
 @bot.command(help="Gives a specified number of random structure decks.")
 async def deck(ctx, count=None):
@@ -75,6 +88,7 @@ async def help(ctx):
     out.add_field(name = "!coin", value = "Flips a coin.", inline= False)
     out.add_field(name = "!bestdeck", value = "Uses a cutting edge AI model to calculate the best possible Yu-Gi-Oh! deck, based on the current TCG Advanced format.", inline= False)
     out.add_field(name = "!order arg1 arg2 ...", value = "Puts the given arguments in a random order.", inline= False)
+    out.add_field(name = "!replay", value = "Replays the last deleted message.", inline= False)
     await ctx.send(embed = out)
 
 if __name__ == "__main__":
