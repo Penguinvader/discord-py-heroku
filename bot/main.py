@@ -61,6 +61,18 @@ async def deck(ctx, count=None):
     except ValueError:
         await ctx.send(f"The argument has to be an integer with max value 14{'.' if random.randrange(10) < 9 else ', idiot.'}")
 
+@bot.command()
+async def distribute_deck(ctx, count, *args):
+    try:
+        out = discord.Embed()
+        count = int(count)
+        decks = random.sample(structlist, k=count*len(args))
+        for i, player in enumerate(args):
+            out.add_field(name = f"{player}'s decks:", value = f"{(', '+chr(10)).join(decks[i*count:(i+1)*count])}")
+        await ctx.send(embed = out)
+    except:
+        await ctx.send("Invalid argument(s).")
+
 
 @bot.command()
 async def roll(ctx):
