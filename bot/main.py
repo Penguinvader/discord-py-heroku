@@ -29,7 +29,8 @@ async def on_message_delete(message):
 
 @bot.event
 async def on_message_edit(before,after):
-    lastedit[before.channel] = before
+    if not after.embeds:
+        lastedit[before.channel] = before
 
 @bot.command()
 async def replay(ctx):
