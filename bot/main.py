@@ -106,7 +106,8 @@ async def order(ctx, *args):
 @bot.command()
 async def help(ctx):
     out = discord.Embed(title = "Commands:")
-    out.add_field(name = "!deck [count]", value = "Generates a random structure deck, count times.", inline= False)
+    out.add_field(name = "!deck [count]", value = "Generates a random structure deck, count times, with no repeats.", inline= False)
+    out.add_field(name = "!distribute_deck count arg1 arg2 ...", value = "Generates a random structure deck for each extra argument, count times per argument, with no repeats.", inline= False)
     out.add_field(name = "!roll", value = "Rolls a random number between 1 and 100.", inline= False)
     out.add_field(name = "!coin", value = "Flips a coin.", inline= False)
     out.add_field(name = "!bestdeck", value = "Uses a cutting edge AI model to calculate the best possible Yu-Gi-Oh! deck, based on the current TCG Advanced format.", inline= False)
