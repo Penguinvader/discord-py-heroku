@@ -25,26 +25,51 @@ async def on_ready():
 
 @bot.event
 async def on_message_delete(message):
-    lastdel[message.channel] = message
+    print(f"Message {message.content} deleted.")
+    if message.channel not in lastdel:
+        lastdel[message.channel] = [message]
+    else:
+        lastdel[message.channel].append(message)
+        if len(lastdel[message.channel]) > 10:
+            lastdel[message.channel].pop(0)
 
 @bot.event
-async def on_message_edit(before,after):
+async def on_message_edit(before, after):
     if not after.embeds:
-        lastedit[before.channel] = before
+        print(f"Message {before.content} edited to {after.content}")
+        if before.channel not in lastedit:
+            lastedit[before.channel] = [before]
+        else:
+            lastedit[before.channel].append(before)
+            if len(lastedit[before.channel]) > 10:
+                lastedit[before.channel].pop(0)
 
 @bot.command()
-async def replay(ctx):
-    deleted = lastdel[ctx.channel]
-    out = discord.Embed(timestamp = deleted.created_at, description = deleted.content)
-    out.set_author(icon_url = deleted.author.avatar_url, name=deleted.author.name)
-    await ctx.send(embed = out)
+async def replay(ctx, look_back_arg=1):
+    look_back = int(look_back_arg)
+    if look_back > 10:
+        await ctx.send('Max look back value is 10.')
+    else:
+        deleted = lastdel[ctx.channel][-look_back]
+        out = discord.Embed(timestamp=deleted.created_at,
+                            description=deleted.content)
+        out.set_author(icon_url=deleted.author.avatar_url,
+                       name=deleted.author.name)
+        await ctx.send(embed=out)
+
 
 @bot.command()
-async def unedit(ctx):
-    edited = lastedit[ctx.channel]
-    out = discord.Embed(timestamp = edited.created_at, description = edited.content)
-    out.set_author(icon_url = edited.author.avatar_url, name=edited.author.name)
-    await ctx.send(embed = out)
+async def unedit(ctx, look_back_arg=1):
+    look_back = int(look_back_arg)
+    if look_back > 10:
+        await ctx.send('Max look back value is 10.')
+    else:
+        edited = lastedit[ctx.channel][-look_back]
+        out = discord.Embed(timestamp=edited.created_at,
+                            description=edited.content)
+        out.set_author(icon_url=edited.author.avatar_url,
+                       name=edited.author.name)
+        await ctx.send(embed=out)
 
 @bot.command(help="Gives a specified number of random structure decks.")
 async def deck(ctx, count=None):
@@ -112,8 +137,8 @@ async def help(ctx):
     out.add_field(name = "!coin", value = "Flips a coin.", inline= False)
     out.add_field(name = "!bestdeck", value = "Uses a cutting edge AI model to calculate the best possible Yu-Gi-Oh! deck, based on the current TCG Advanced format.", inline= False)
     out.add_field(name = "!order arg1 arg2 ...", value = "Puts the given arguments in a random order.", inline= False)
-    out.add_field(name = "!replay", value = "Replays the last deleted message.", inline= False)
-    out.add_field(name = "!unedit", value = "Displays the unedited version of the last edited message.", inline= False)
+    out.add_field(name = "!replay [look_back]", value = "Replays the last deleted message.", inline= False)
+    out.add_field(name = "!unedit [look_back]", value = "Displays the unedited version of the last edited message.", inline= False)
     await ctx.send(embed = out)
 
 if __name__ == "__main__":
