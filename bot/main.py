@@ -11,13 +11,7 @@ bot.remove_command('help')
 lastdel = {}
 lastedit = {}
 TOKEN = os.getenv("DISCORD_TOKEN")
-DECKS = """
-deck 1
-deck 2
-deck 3
-deck 4
-deck 5
-""".split('\n')
+DECKS = ['deck 1', 'deck 2', 'deck 3', 'deck 4']
 decks = []
 
 structs = os.getenv("STRUCTS")
@@ -140,9 +134,12 @@ async def order(ctx, *args):
 async def yepdeck(ctx):
     global decks
     if not decks:
+        print('currently no decks queued')
         decks = DECKS[::]
         random.shuffle(decks)
-    await ctx.send(ctx.message.author.mention + ' ' + decks.pop())
+        print('random order made:', decks)
+    print('sending', decks[0])
+    await ctx.send(ctx.message.author.mention + ' ' + decks.pop(0))
     
 
 @bot.command()
