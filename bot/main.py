@@ -11,6 +11,14 @@ bot.remove_command('help')
 lastdel = {}
 lastedit = {}
 TOKEN = os.getenv("DISCORD_TOKEN")
+DECKS = """
+deck 1
+deck 2
+deck 3
+deck 4
+deck 5
+""".split('\n')
+decks = []
 
 structs = os.getenv("STRUCTS")
 
@@ -127,6 +135,14 @@ async def order(ctx, *args):
         await ctx.send(out)
     else:
         await ctx.send("You need to provide at least 1 argument.")
+
+@bot.command()
+async def yepdeck(ctx):
+    if not decks:
+        decks = DECKS[::]
+        random.shuffle(decks)
+    await ctx.send(ctx.message.author.mention + ' ' + decks.pop())
+    
 
 @bot.command()
 async def help(ctx):
