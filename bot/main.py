@@ -138,6 +138,7 @@ async def order(ctx, *args):
 
 @bot.command()
 async def yepdeck(ctx):
+    global decks
     if not decks:
         decks = DECKS[::]
         random.shuffle(decks)
