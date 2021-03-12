@@ -148,12 +148,19 @@ async def yepdeck(ctx, start, stop):
                 decklist.append(decks.pop(0))
             else:
                 decks.pop(0)
-        await ctx.send('\n'.join(DECKS.index(decklist)))
+        out = 'Decks in order:'
+        for i, deck in enumerate(decklist, 1):
+            out += '\n' + i + '. ' + DECKS.index(deck)
+        await ctx.send(out)
 
 @bot.command()
 async def yepreveal(ctx, deck_no):
+    guy = ctx.message.author
     deck_no = int(deck_no)
-    await ctx.message.author.dm_channel.send(DECKS[deck_no])
+    if guy.dm_channel:
+        await guy.dm_channel.send(DECKS[deck_no])
+    else:
+        await guy.create_dm().send(DECKS[deck_no])
 
 @bot.command()
 async def help(ctx):
