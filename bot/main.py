@@ -13,6 +13,7 @@ lastedit = {}
 TOKEN = os.getenv("DISCORD_TOKEN")
 DECKS = ['deck 1', 'deck 2', 'deck 3', 'deck 4']
 decks = []
+yeprng = random.Random(777)
 
 structs = os.getenv("STRUCTS")
 
@@ -131,15 +132,20 @@ async def order(ctx, *args):
         await ctx.send("You need to provide at least 1 argument.")
 
 @bot.command()
-async def yepdeck(ctx):
-    global decks
-    if not decks:
-        print('currently no decks queued')
-        decks = DECKS[::]
-        random.shuffle(decks)
-        print('random order made:', decks)
-    print('sending', decks[0])
-    await ctx.send(ctx.message.author.mention + ' ' + decks.pop(0))
+async def yepdeck(ctx, start, stop):
+    if ctx.message.author.guild_permissions.ban_members:
+        global decks
+        decklist = []
+        for i in range(1, stop+1):
+            if not decks:
+                print('currently no decks queued')
+                decks = DECKS[::]
+                yeprng.shuffle(decks)
+                print('random order made:', decks)
+            print('sending', decks[0])
+            if i >= start:
+                decklist.append(decks.pop(0))
+        await ctx.send('\n'.join(decklist))
     
 
 @bot.command()
