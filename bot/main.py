@@ -27,7 +27,7 @@ async def on_ready():
 
 @bot.event
 async def on_message_delete(message):
-    print(f"Message {message.content} deleted.")
+    print(f"Message {message.content} deleted by {message.author}.")
     if message.channel not in lastdel:
         lastdel[message.channel] = [message]
     else:
@@ -38,7 +38,7 @@ async def on_message_delete(message):
 @bot.event
 async def on_message_edit(before, after):
     if not after.embeds:
-        print(f"Message {before.content} edited to {after.content}")
+        print(f"Message {before.content} edited to {after.content} by {after.author}.")
         if before.channel not in lastedit:
             lastedit[before.channel] = [before]
         else:
@@ -148,8 +148,12 @@ async def yepdeck(ctx, start, stop):
                 decklist.append(decks.pop(0))
             else:
                 decks.pop(0)
-        await ctx.send('\n'.join(decklist))
-    
+        await ctx.send('\n'.join(DECKS.index(decklist)))
+
+@bot.command()
+async def yepreveal(ctx, deck_no):
+    deck_no = int(deck_no)
+    await ctx.message.author.dm_channel.send(DECKS[deck_no])
 
 @bot.command()
 async def help(ctx):
