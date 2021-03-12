@@ -131,13 +131,14 @@ async def order(ctx, *args):
         await ctx.send("You need to provide at least 1 argument.")
 
 @bot.command()
-async def yepdeck(ctx, start, stop):
+async def yepdeck(ctx, start, *args):
     if ctx.message.author.guild_permissions.ban_members:
-        start, stop = int(start), int(stop)
+        args = list(args)
+        start = int(start)
         global decks
         decklist = []
         yeprng = random.Random(777)
-        for i in range(1, stop+1):
+        for i in range(1, start+len(args)+1):
             if not decks:
                 print('currently no decks queued')
                 decks = DECKS[::]
@@ -150,7 +151,7 @@ async def yepdeck(ctx, start, stop):
                 decks.pop(0)
         out = 'Decks in order:'
         for i, deck in enumerate(decklist, 1):
-            out += '\n' + str(i) + '. ' + str(DECKS.index(deck))
+            out += '\n' + args[i] + '. ' + str(DECKS.index(deck))
         await ctx.send(out)
 
 @bot.command()
