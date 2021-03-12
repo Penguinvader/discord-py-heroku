@@ -138,7 +138,7 @@ async def yepdeck(ctx, start, *args):
         global decks
         decklist = []
         yeprng = random.Random(777)
-        for i in range(1, start+len(args)+1):
+        for i in range(1, start+len(args)):
             if not decks:
                 print('currently no decks queued')
                 decks = DECKS[::]
