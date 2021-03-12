@@ -13,7 +13,6 @@ lastedit = {}
 TOKEN = os.getenv("DISCORD_TOKEN")
 DECKS = ['deck 1', 'deck 2', 'deck 3', 'deck 4']
 decks = []
-yeprng = random.Random(777)
 
 structs = os.getenv("STRUCTS")
 
@@ -137,6 +136,7 @@ async def yepdeck(ctx, start, stop):
         start, stop = int(start), int(stop)
         global decks
         decklist = []
+        yeprng = random.Random(777)
         for i in range(1, stop+1):
             if not decks:
                 print('currently no decks queued')
