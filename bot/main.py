@@ -134,6 +134,7 @@ async def order(ctx, *args):
 @bot.command()
 async def yepdeck(ctx, start, stop):
     if ctx.message.author.guild_permissions.ban_members:
+        start, stop = int(start), int(stop)
         global decks
         decklist = []
         for i in range(1, stop+1):
