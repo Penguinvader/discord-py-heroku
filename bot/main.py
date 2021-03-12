@@ -136,6 +136,7 @@ async def yepdeck(ctx, start, *args):
         args = list(args)
         start = int(start)
         global decks
+        decks = []
         decklist = []
         yeprng = random.Random(777)
         for i in range(1, start+len(args)):
