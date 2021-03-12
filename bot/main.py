@@ -150,7 +150,7 @@ async def yepdeck(ctx, start, stop):
                 decks.pop(0)
         out = 'Decks in order:'
         for i, deck in enumerate(decklist, 1):
-            out += '\n' + i + '. ' + DECKS.index(deck)
+            out += '\n' + str(i) + '. ' + str(DECKS.index(deck))
         await ctx.send(out)
 
 @bot.command()
