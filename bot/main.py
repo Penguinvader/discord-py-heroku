@@ -146,6 +146,8 @@ async def yepdeck(ctx, start, stop):
             print('sending', decks[0])
             if i >= start:
                 decklist.append(decks.pop(0))
+            else:
+                decks.pop(0)
         await ctx.send('\n'.join(decklist))
     
 
