@@ -157,10 +157,9 @@ async def yepdeck(ctx, start, stop):
 async def yepreveal(ctx, deck_no):
     guy = ctx.message.author
     deck_no = int(deck_no)
-    if guy.dm_channel:
-        await guy.dm_channel.send(DECKS[deck_no])
-    else:
-        await guy.create_dm().send(DECKS[deck_no])
+    if not guy.dm_channel:
+        await guy.create_dm()
+    await guy.dm_channel.send(DECKS[deck_no])
 
 @bot.command()
 async def help(ctx):
