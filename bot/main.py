@@ -219,7 +219,7 @@ async def yepdeck(ctx, start, *args):
 async def yepreveal(ctx, deck_no):
     guy = ctx.message.author
     deck_no = int(deck_no)
-    print(guy + ' asked for ' + str(deck_no))
+    print(guy, 'asked for ' + str(deck_no))
     if not guy.dm_channel:
         await guy.create_dm()
     await guy.dm_channel.send(DECKS[deck_no])
