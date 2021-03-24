@@ -11,7 +11,7 @@ bot.remove_command('help')
 lastdel = {}
 lastedit = {}
 TOKEN = os.getenv("DISCORD_TOKEN")
-DECKS = [
+OLD_DECKS = [
     'https://www.duelingbook.com/deck?id=6959061', 'https://www.duelingbook.com/deck?id=7200648', 
     'https://www.duelingbook.com/deck?id=6061894', 'https://www.duelingbook.com/deck?id=7618767', 
     'https://www.duelingbook.com/deck?id=7616832', 'https://www.duelingbook.com/deck?id=7462468', 
@@ -57,6 +57,16 @@ DECKS = [
     'https://www.duelingbook.com/deck?id=7618419', 'https://www.duelingbook.com/deck?id=7631102', 
     'https://www.duelingbook.com/deck?id=7629339', 'https://www.duelingbook.com/deck?id=7614751', 
     'https://www.duelingbook.com/deck?id=4583598']
+DECKS = [
+    'https://www.duelingbook.com/deck?id=7462468', 'https://www.duelingbook.com/deck?id=7629234',
+    'https://www.duelingbook.com/deck?id=5790535', 'https://www.duelingbook.com/deck?id=5897003',
+    'https://www.duelingbook.com/deck?id=4848618', 'https://www.duelingbook.com/deck?id=7631949',
+    'https://www.duelingbook.com/deck?id=7614751', 'https://www.duelingbook.com/deck?id=7628415',
+    'https://www.duelingbook.com/deck?id=7626139', 'https://www.duelingbook.com/deck?id=7722231',
+    'https://www.duelingbook.com/deck?id=7722235', 'https://www.duelingbook.com/deck?id=3638756',
+    'https://www.duelingbook.com/deck?id=7041009', 'https://www.duelingbook.com/deck?id=7722386',
+    'https://www.duelingbook.com/deck?id=7722273', 'https://www.duelingbook.com/deck?id=7722271'
+]
 decks = []
 
 structs = os.getenv("STRUCTS")
