@@ -58,14 +58,22 @@ OLD_DECKS = [
     'https://www.duelingbook.com/deck?id=7629339', 'https://www.duelingbook.com/deck?id=7614751', 
     'https://www.duelingbook.com/deck?id=4583598']
 DECKS = [
-    'https://www.duelingbook.com/deck?id=7462468', 'https://www.duelingbook.com/deck?id=7629234',
-    'https://www.duelingbook.com/deck?id=5790535', 'https://www.duelingbook.com/deck?id=5897003',
-    'https://www.duelingbook.com/deck?id=4848618', 'https://www.duelingbook.com/deck?id=7631949',
-    'https://www.duelingbook.com/deck?id=7614751', 'https://www.duelingbook.com/deck?id=7628415',
-    'https://www.duelingbook.com/deck?id=7626139', 'https://www.duelingbook.com/deck?id=7722231',
-    'https://www.duelingbook.com/deck?id=7722235', 'https://www.duelingbook.com/deck?id=3638756',
-    'https://www.duelingbook.com/deck?id=7041009', 'https://www.duelingbook.com/deck?id=7722386',
-    'https://www.duelingbook.com/deck?id=7722273', 'https://www.duelingbook.com/deck?id=7722271'
+    'https://www.duelingbook.com/deck?id=4754701',
+    'https://www.duelingbook.com/deck?id=7722273',
+    'https://www.duelingbook.com/deck?id=7693451',
+    'https://www.duelingbook.com/deck?id=7630159',
+    'https://www.duelingbook.com/deck?id=7639624',
+    'https://www.duelingbook.com/deck?id=7629584',
+    'https://www.duelingbook.com/deck?id=7722231',
+    'https://www.duelingbook.com/deck?id=5462302',
+    'https://www.duelingbook.com/deck?id=6740087',
+    'https://www.duelingbook.com/deck?id=7629234',
+    'https://www.duelingbook.com/deck?id=7624530',
+    'https://www.duelingbook.com/deck?id=7629504',
+    'https://www.duelingbook.com/deck?id=5650588',
+    'https://www.duelingbook.com/deck?id=7620755',
+    'https://www.duelingbook.com/deck?id=7579767',
+    'https://www.duelingbook.com/deck?id=7627786',
 ]
 decks = []
 
