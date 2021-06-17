@@ -77,6 +77,42 @@ DECKS = [
 ]
 decks = []
 
+types = [
+    'Aqua',
+    'Beast',
+    'Beast-Warrior',
+    'Cyberse',
+    'Dinosaur',
+    'Divine-Beast',
+    'Dragon',
+    'Fairy',
+    'Fiend',
+    'Fish',
+    'Insect',
+    'Machine',
+    'Plant',
+    'Psychic',
+    'Pyro',
+    'Reptile',
+    'Rock',
+    'Sea Serpent',
+    'Spellcaster',
+    'Thunder',
+    'Warrior',
+    'Winged Beast',
+    'Wyrm',
+    'Zombie',
+]
+
+attributes = [
+    'Water',
+    'Fire',
+    'Wind',
+    'Earth',
+    'Light',
+    'Dark'
+]
+
 structs = os.getenv("STRUCTS")
 
 structlist = [s.strip() for s in structs.split("\n")]
@@ -241,6 +277,15 @@ async def yepreveal(ctx, deck_no):
     if not guy.dm_channel:
         await guy.create_dm()
     await guy.dm_channel.send(DECKS[deck_no])
+    
+@bot.command()
+async def wheel(ctx):
+    guy = ctx.message.author
+    combo = f'{random.choice(attributes)} {random.choice(types)}'
+    print(guy, 'spun', combo)
+    if not guy.dm_channel:
+        await guy.create_dm()
+    await guy.dm_channel.send(combo)
 
 
 @bot.command()
